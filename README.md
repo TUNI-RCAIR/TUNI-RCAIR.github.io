@@ -6,4 +6,4 @@
 Testing the repo!
 Additional details:
 
-http://TUNI/RCAIR.github.io/
+http://TUNI-RCAIR.github.io/
