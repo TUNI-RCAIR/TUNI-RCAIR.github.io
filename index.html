@@ -1,4 +1,262 @@
-Creating a new html page
-Link to the [dataset](https://tuni-rcair.github.io/dataset.html)
-----------------------------
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tampere University Rotated Circular Array Impulse Response Dataset(TUNI-RCAIR)</title>
+	<ul class='menulist'>
+		<li><a class="active" href="#introduction">Introduction</a></li>
+		<li><a href="#datacollection">Data Collection Setup</a></li>
+		<li><a href="#dataroom">Data collection Environments</a></li>
+		<li><a href="#datasetaccess">Dataset Access</a></li>
+		<li><a href="#contact">Contact</a></li>
+	</ul>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+	
+    <section id="introduction">
+      <div class="container">
+        
+          <h1>Tampere University Rotated Circular Array Impulse Response Dataset</h1>
+		  <br>
+          <p class="byline"> A dataset of impulse responses collected from different rooms with varying characteristics in <a href="https://tuni.fi">Tampere University</a> , Hervanta campus, Finland. 
+          </p>
+		  <p class = "byline"> Why do we need a new IR dataset ?
+			<ul>
+			<li>
+			Supervised DNNs require lots of labeled training data. The existing datasets do not completely address the data requirements for moving sound source(localization) cases.
+			</li>
+			<li>
+			Existing IR datasets are collected with sparse microphone and loudspeaker positions.
+			</li>
+			</ul>
+		  </p>
+		  <p class = "byline"> Salient features of the TUNI-RCAIR dataset
+			<ul>
+			<li>
+			The moving source condition is replicated by moving the microphone array, instead of moving the sound source.
+			</li>
+			<li>
+			Data is collected by rotating the circular array for every five degrees (fine resolution) and capturing IRs. This setup is decided to address the data requirements.
+			</li>
+			</ul>
+		  </p>		
+		  <p class = "byline">	Comparison with some of the existing datasets.  
+			<table class="greenTable">
+			<thead>
+			<tr>
+			<th>Dataset</th>
+			<th>Rooms</th>
+			<th>Distance Range(m)</th>
+			<th>Mic/Speaker positions</th>
+			<th>Angular Resolution</th>
+			<th>Angle Range</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>AIR</td>
+			<td>4</td>
+			<td>0.5 - 10.2</td>
+			<td>18</td>
+			<td>NA</td>
+			<td>NA</td>
+			</tr>
+			<tr>
+			<td>RWCP</td>
+			<td>5</td>
+			<td>2</td>
+			<td>25</td>
+			<td>20 &deg</td>
+			<td>50 &deg - 130 &deg</td>
+			</tr>
+			<tr>
+			<td>DCASE</td>
+			<td>5</td>
+			<td>1 - 2</td>
+			<td>504</td>
+			<td>10 &deg</td>
+			<td>-40 &deg - 40 &deg</td>
+			</tr>
+			<tr>
+			<td>ACE</td>
+			<td>7</td>
+			<td>14</td>
+			<td>NA</td>
+			<td>NA</td>
+			<td>NA</td>
+			</tr>
+			<tr>
+			<td>TUNI-RCAIR</td>
+			<td>7</td>
+			<td>0.7 - 2.1</td>
+			<td>777</td>
+			<td>5 &deg</td>
+			<td>-90 &deg - 90 &deg</td>
+			</tr>
+			</tbody>
+			</table>
+			<br>
+		    The above table compares some of the existing IR datasets with the TUNI-RCAIR dataset. A detailed comparison is available in the paper published. TUNI-RCAIR stands out in terms of fine angle resolution and,
+		  	variation in the microphone/loudspeaker positions. 
+		  </p>
+        
+      </div>
+    </section>
+
+    <section id="datacollection">
+      <div class="container">
+	  <h1>Data collection setup </h1>
+	  <p>
+	  <ul>
+	  <li>
+	  Source - Genelec 810 A loudspeaker. 
+	  </li>
+	  <br>
+	  <img src="C:/Users/Arjun/Desktop/TUNI website/images/Speaker.jpg" width = "250" height = "250" alt="Source">
+	  <br><br>
+	  <li>
+	  Receiver - Microphone array consisting of seven DPA 4060 microphones, is placed on a plastic slab, mounted over a tripod. The plastic slab is attached to Raspberry Pi step motor. The microphone array
+	  setup is similar to that of UMA-8, used in smart speakers such as Amazon echo.
+	  </li>
+	  <br>
+	  <img src="C:/Users/Arjun/Desktop/TUNI website/images/Micarray_crop.jpg" width = "250" height = "250" alt="Receiver">
+	  </ul>
+	  </p>
+	  
+	  </div>
+    </section>
+
+    <section id="dataroom">
+      <div class="container">
+	  <h1> Data collection environments</h1>
+	  Impulse responses are collected from seven different rooms, varying in physical dimensions, as well as acoustic properties such as reverberation time. 
+	  The distance between the source and the receiver is varied thrice and the IRs are collected. 
+	  777 IRs are collected, 111 IRs from each room. For a particular distance between the source and the receiver, 37 unique IRs are generated.
+	  <ol>
+	  <li> Audio Lab - A studio-like setup with some furniture and lights. It falls under the category of low
+      reverberation but not as low as an anechoic chamber. 
+	  </li>
+	  <br>
+	  <img src="images/ALB.jpg" width = "250" height = "250" alt="Receiver">
+	  <br><br>
+	  <li> Office Room-1 - A typical work environment in the university campus. This work space contains tables, sofa, and chairs. 
+	  </li>
+	  <br>
+	  <img src="images/ORA.jpg" width = "250" height = "250" alt="Receiver">
+	  <br><br>
+	  <li> Office Room-2 - Another type of office setup, with different dimensions and acoustic characteristics
+		   than Office Room-1.
+	  </li>
+	  <br>
+	  <img src="images/ORB.jpg" width = "250" height = "250" alt="Receiver">
+	  <br><br>
+	  <li> Small Meeting Room - One of the smallest places used for data collection. It is highly reverberant
+		   in nature. It contains a table and cupboards.
+	  </li>
+	  <br>
+	  <img src="images/SMR.jpg" width = "250" height = "250" alt="Receiver">
+	  <br><br>
+	  <li> Large Meeting Room1 - The Large Meeting Room is bigger than other rooms from which data is
+		   collected. Contains a table, a few chairs and sofas.
+	  </li>
+	  <br>
+	  <img src="images/LMR.jpg" width = "250" height = "250" alt="Receiver">
+	  <br><br>
+	  <li> Glass Corridor - IRs are collected from one of the staircases of the university premises. It is highly
+		   reverberant, the most among the spaces involved in data collection.
+	  </li>
+	  <br>
+	  <img src="images/GCO.jpg" width = "250" height = "250" alt="Receiver">
+	  <br><br>
+	  <li> Anechoic Chamber - IRs are also collected from an anechoic chamber. It is the least reverberant
+		   of all the spaces involved in data collection.
+	  </li>
+	  	  <br>
+	  <img src="images/AEC.jpg" width = "250" height = "250" alt="Receiver">
+	  <br><br>
+	  </ol>
+	  <p class = "byline"> Comparison of spaces used for data collection in terms of physical and acoustic properties.</p> 
+		<table class="greenTable">
+		<thead>
+		<tr>
+		<th>Room</th>
+		<th>ID</th>
+		<th>Dimensions(m)</th>
+		<th>Volume(m<sup>3</sup>)</th>
+		<th>T-60(ms)</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		<td>Audio Lab</td>
+		<td>ALB</td>
+		<td>(2 * 2.3 * 2.6)</td>
+		<td>11.96</td>
+		<td>270</td>
+		</tr>
+		<tr>
+		<td>Office Room-1</td>
+		<td>ORA</td>
+		<td>(3.9 * 4.9 * 3.2)</td>
+		<td>61.15</td>
+		<td>486</td>
+		</tr>
+		<tr>
+		<td>Office Room-2</td>
+		<td>ORB</td>
+		<td>(2.7 * 5.1 * 3.2)</td>
+		<td>44.06</td>
+		<td>314</td>
+		</tr>
+		<tr>
+		<td>Small Meeting Room</td>
+		<td>SMR</td>
+		<td>(2.5 * 3.7 * 2.5)</td>
+		<td>23.13</td>
+		<td>416</td>
+		</tr>
+		<tr>
+		<td>Large Meeting Room</td>
+		<td>LMR</td>
+		<td>(6.6 * 5.2 * 3.2)</td>
+		<td>109.82</td>
+		<td>319</td>
+		</tr>
+		<tr>
+		<td>Glass Corridor</td>
+		<td>GCO</td>
+		<td>(7.3 * 2.7 * 3.4)</td>
+		<td>67.01</td>
+		<td>1700</td>
+		</tr>
+		<tr>
+		<td>Anechoic Chamber</td>
+		<td>AEC</td>
+		<td>(7.8 * 7.8 * 7.8)</td>
+		<td>474.56</td>
+		<td>60</td>
+		</tr>
+		</tbody>
+		</table>
+	
+    </div>
+    </section>
+
+    <section id="datasetaccess">
+      <div class="container">
+	<h1> TUNI-RCAIR dataset is publicly available and can be accessed from the <a href="index.html">link</a>.</h1> 
+	<p class = "byline">The paper corresponding to the dataset is accepted in the EUSIPCO 2021, and available <a href="index.html">here</a> </p>
+    </div>
+    </section>
+	
+
+  </body>
+</html>
 
